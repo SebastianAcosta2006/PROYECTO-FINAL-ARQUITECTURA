@@ -7,17 +7,17 @@ Estructura del Proyecto
 PROYECTO_FINAL/
 │
 ├── CPU/
-│ ├── isa.py # Definición de la ISA personalizada
-│ ├── pipeline.py # Lógica del pipeline y detección de hazards
+│ ├── ISA.py # Definición de la ISA personalizada
+│ ├── PIPELINE.py # Lógica del pipeline y detección de hazards
 │
-├── memoria/
-│ └── cache.py # Simulación de la caché L1
+├── CACHE/
+│ └── CACHE.py # Simulación de la caché L1
 │
-├── io/
-│ ├── dispositivo.py # Simulación de entrada/salida
-│ └── simuinterrupciones.py # Manejo de interrupciones
+├── IO/
+│ ├── DISPO.py # Simulación de entrada/salida
+│ └── INTERRUPCIONES.py # Manejo de interrupciones
 │
-├── Test/
+├── BENCHMARKS/
 │ └── benchmarks.py # Benchmarks para pruebas (secuencial, aleatoria, aritmética)
 │
 └── main.py # Punto de entrada principal del simulador
