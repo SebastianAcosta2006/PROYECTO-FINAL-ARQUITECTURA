@@ -1,60 +1,49 @@
-# 🧠 PROYECTO FINAL – SIMULADOR DE ARQUITECTURA DE COMPUTADORES
+Proyecto Final: Simulador de Procesador risc con pipeline
+Descripción
+Este proyecto implementa un simulador educativo de un procesador con arquitectura RISC segmentado en 5 etapas (IF, ID, EX, MEM, WB), incluyendo soporte para detección de hazards, manejo de interrupciones y simulación de una memoria caché L1 con mapeo directo. Fue desarrollado en Python con una ISA personalizada, y está orientado a demostrar conceptos de arquitectura de computadores y procesamiento en paralelo.
 
-Este proyecto es un simulador educativo de arquitectura de computadores implementado en Python. Modela componentes clave como la CPU (con pipeline), la memoria caché, dispositivos de entrada/salida y maneja interrupciones.
-
-## 📁 ESTRUCTURA DEL PROYECTO
-
-```
-PROYECTO FINAL CODES ARQUITECTURA/
-│
-├── main.py                          # Punto de entrada principal del simulador
+Estructura del Proyecto
+bash
+PROYECTO_FINAL/
 │
 ├── CPU/
-│   ├── isa.py                       # Definición de la ISA (conjunto de instrucciones)
-│   ├── pipeline.py                  # Lógica del pipeline de instrucciones
-│   └── __init__.py.txt              # Archivo de inicialización (renombrar si necesario)
-│
-├── io/
-│   ├── dispositivo.py               # Simulación de dispositivos de entrada/salida
-│   └── simuinterrupciones.py        # Gestión de interrupciones simuladas
+│   ├── isa.py              # Definición de la ISA personalizada
+│   ├── pipeline.py         # Lógica del pipeline y detección de hazards
 │
 ├── memoria/
-│   └── cache.py                     # Simulación de caché
+│   └── cache.py            # Simulación de la caché L1
 │
-└── Test/
-    └── benchmarks.py               # Pruebas de rendimiento del simulador
-```
+├── io/
+│   ├── dispositivo.py      # Simulación de entrada/salida
+│   └── simuinterrupciones.py # Manejo de interrupciones
+│
+├── Test/
+│   └── benchmarks.py       # Benchmarks para pruebas (secuencial, aleatoria, aritmética)
+│
+└── main.py                 # Punto de entrada principal del simulador
+Instrucciones de Ejecución
+Requisitos:
+Python 3.8 o superior
+No requiere librerías externas
+Ejecutar el simulador:
+Desde la raíz del proyecto, corre:
 
-## 🛠️ REQUISITOS
+bash
+python main.py
+Elegir un benchmark:
+Dentro del archivo main.py, puedes seleccionar uno de los programas de prueba importando alguna función desde Test/benchmarks.py, por ejemplo:
 
-- Python 3.10 o superior (idealmente el mismo usado durante el desarrollo, ya que hay `.pyc` de CPython 3.13)
-- No se requieren librerías externas (basado en el contenido observado)
+python
+from Test.benchmarks import load_program1
 
-## ▶️ INSTRUCCIONES DE EJECUCIÓN
+Comentarios del Código
+El código fuente está comentado línea por línea para facilitar su comprensión, especialmente en:
+pipeline.py: Cada etapa del pipeline está claramente separada y documentada.
+cache.py: Describe el comportamiento de la caché en mapeo directo.
+benchmarks.py: Explica los distintos tipos de patrones de acceso a memoria.
 
-1. **Renombrar `__init__.py.txt`**  
-   Asegúrate de que el archivo `CPU/__init__.py.txt` se renombre a `__init__.py`.
-
-   ```bash
-   mv "CPU/__init__.py.txt" "CPU/__init__.py"
-   ```
-
-2. **Ejecutar el simulador:**
-
-   Desde el directorio raíz (donde está `main.py`):
-
-   ```bash
-   python main.py
-   ```
-
-3. **(Opcional) Ejecutar pruebas de rendimiento:**
-
-   ```bash
-   python Test/benchmarks.py
-   ```
-
-## 💬 COMENTARIOS
-
-- La lógica del pipeline y el comportamiento de la caché están modularizados para facilitar su modificación y pruebas.
-- Los `.pyc` pueden ser eliminados si se quiere limpiar el proyecto.
-- El proyecto está preparado para ampliaciones, como agregar nuevas instrucciones o dispositivos.
+Objetivos Didácticos
+Entender el flujo de instrucciones en una arquitectura tipo pipeline.
+Observar cómo se gestionan los conflictos de datos (hazards).
+Visualizar el impacto de una caché en el rendimiento del sistema.
+Explorar cómo se manejan interrupciones y E/S en una arquitectura simple.
